@@ -1,0 +1,24 @@
+﻿<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+    <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+    <div class="container-fluid">
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+    </div>
+    <br />
+
+    <!--<div>
+        <ul ng-repeat="selected in selectedDocs">
+            <li>{{selected.DocumentId}}</li>
+        </ul>
+    </div>-->
+
+    <div class="col-xs-6 col-sm-6 col-md-6 text-left">
+        <button class="btn btn-lg btn-danger" data-ng-click="delete()" ng-disabled="!canPurge()">
+            <!--<span class="glyphicon glyphicon-remove"></span>-->Delete
+        </button>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+        <button class="btn btn-lg btn-primary" data-ng-click="restore()" ng-disabled="!canRestore()">Restore</button>
+    </div>
+
+</div>
