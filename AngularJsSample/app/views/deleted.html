@@ -1,24 +1,41 @@
 ﻿<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row">
+        <!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="btn-group">
+                <label class="btn btn-default" ng-model="documentType" btn-radio="'All'">All</label>
+                <label class="btn btn-default" ng-model="documentType" btn-radio="'Unprotected'"><span class="glyphicon glyphicon-remove"></span> Unprotected</label>
+                <label class="btn btn-default" ng-model="documentType" btn-radio="'Protected'"><span class="glyphicon glyphicon-ok"></span> Protected</label>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 input-group">-->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 input-group">
+            <button type="button" class="input-group-addon btn btn-default" ng-model="selectAll"
+                    btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">
+                <span ng-show="!selectAll" class="glyphicon glyphicon-unchecked" title="Select all"></span>
+                <span ng-show="selectAll" class="glyphicon glyphicon-check" title="Deselect all"></span>
+            </button>
+            <input type="text" ng-model="filterText" placeholder="search.." class="form-control">
+        </div>
+    </div>
+</div>
+<p />
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
     <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
-    <div class="container-fluid">
-        <div class="gridStyle" ng-grid="gridOptions"></div>
-    </div>
-    <br />
+    <div class="gridStyle" ng-grid="gridOptions"></div>
 
+    <p />
     <!--<div>
         <ul ng-repeat="selected in selectedDocs">
             <li>{{selected.DocumentId}}</li>
         </ul>
     </div>-->
-
-    <div class="col-xs-6 col-sm-6 col-md-6 text-left">
-        <button class="btn btn-lg btn-danger" data-ng-click="delete()" ng-disabled="!canPurge()">
-            <!--<span class="glyphicon glyphicon-remove"></span>-->Delete
-        </button>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-        <button class="btn btn-lg btn-primary" data-ng-click="restore()" ng-disabled="!canRestore()">Restore</button>
-    </div>
-
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 text-left ">
+    <button class="btn btn-lg btn-danger" data-ng-click="delete()" ng-disabled="!canPurge()">
+        Permanently delete
+    </button>
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+    <button class="btn btn-lg btn-primary" data-ng-click="restore()" ng-disabled="!canRestore()">Restore</button>
 </div>
