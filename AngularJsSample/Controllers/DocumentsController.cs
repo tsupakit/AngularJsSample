@@ -6,79 +6,18 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using AutoMapper;
+//using Draycir.Base;
+using Draycir.DM.Administration.Web.Filters;
+using Draycir.DM.Administration.Web.Models;
+//using Draycir.DM.Domain;
+//using Draycir.DM.Services;
 
 namespace Draycir.DM.Administration.Web.Controllers
 {
     //[RoutePrefix("api/documents")]
     public class DocumentsController : ApiController
     {
-        private const int _max = 20;
-        //private static List<DeletedDocument> _deletedDocuments;
-
-        private List<DeletedDocument> Mock
-        {
-            get
-            {
-                var data = new List<DeletedDocument>();
-
-                for (int i = 1; i <= _max; i++)
-                {
-                    var prime = IsPrime(i);
-                    DateTime? protectionStart = null;
-                    DateTime? protectionEnd = null;
-
-                    if (prime)
-                    {
-                        protectionStart = DateTime.Now;
-                        protectionEnd = protectionStart.Value.AddMonths(1);
-                    }
-
-                    data.Add(new DeletedDocument
-                    {
-                        DocumentId = Guid.NewGuid(),
-                        DocumentName = "Test" + i,
-                        DocumentType = "Transaction" + i,
-                        DocumentDate = DateTime.Now.AddDays(i - 1),
-                        ArchivedBy = "Supakit.T",
-                        DeletedDate = DateTime.Now,
-                        DeletedBy = "Supakit.T",
-                        IsProtected = prime,
-                        ProtectionStartDate = protectionStart,
-                        ProtectionEndDate = protectionEnd
-                    });
-                }
-
-                return data;
-            }
-        }
-
-        private bool IsPrime(int number)
-        {
-            if (number < 2)
-                return false;
-            if (number == 2)
-                return true;
-            if ((number & 1) == 0)
-                return false;
-
-            for (int i = 3; i < number; i++)
-            {
-                if (number % i == 0)
-                    return false;
-            }
-
-            return true;
-        }
-
-        private List<DeletedDocument> DeletedDocuments
-        {
-            get
-            {
-                //return _deletedDocuments ?? (_deletedDocuments = Mock);
-                return Mock;
-            }
-        }
-
         //private IAdministrationServiceApi _adminProxy;
 
         private Guid[] Convert(string[] input)
@@ -103,11 +42,19 @@ namespace Draycir.DM.Administration.Web.Controllers
 
         //default http get verb
         [HttpGet]
-        public IEnumerable<DeletedDocument> GetDeletedDocuments()
+        [ActionName("deleted")]
+        //[ImpersonateFilter]
+        //[WcfExceptionFilter]
+        public DeletedDocumentResponseDto GetDeletedDocuments(int pageSize, int page)
         {
-            //IEnumerable<DeletedDocumentResult> deletedDocuments = _adminProxy.GetDeletedDocuments();
-            List<DeletedDocument> deletedDocuments = DeletedDocuments;
-            return deletedDocuments;
+            //DeletedDocumentResponse response = _adminProxy.GetDeletedDocuments(pageSize, page);
+            DeletedDocumentResponseDto response = new DeletedDocumentResponseDto()
+            {
+                TotalDocuments = DeletedDocumentDto.MockDeletedDocuments.Count,
+                DeletedDocuments = DeletedDocumentDto.MockDeletedDocuments.Skip(pageSize * (page - 1)).Take(pageSize)
+            };
+            return response;
+            //return Mapper.Map<DeletedDocumentResponseDto>(response);
         }
 
         //public HttpResponseMessage GetFile(string id)
@@ -134,12 +81,14 @@ namespace Draycir.DM.Administration.Web.Controllers
         //[Route("purge")]
         [HttpPost]
         [ActionName("purge")]
+        //[ImpersonateFilter]
+        //[WcfExceptionFilter]
         public int PurgeDocuments(string[] id)
         {
             //DeletedDocuments.RemoveAll(x => id.Contains(x.DocumentName));
             Guid[] documentIds = Convert(id);
 
-            int result = documentIds.Length; //_adminProxy.PurgeDocuments(documentIds); 
+            int result = id.Length; //_adminProxy.PurgeDocuments(documentIds); 
 
             return result;
         }
@@ -147,6 +96,8 @@ namespace Draycir.DM.Administration.Web.Controllers
         //[Route("restore")]
         [HttpPost]
         [ActionName("restore")]
+        //[ImpersonateFilter]
+        //[WcfExceptionFilter]
         public int RestoreDocuments(string[] id)
         {
             Guid[] documentIds = Convert(id);
@@ -158,17 +109,4 @@ namespace Draycir.DM.Administration.Web.Controllers
 
     }
 
-    public class DeletedDocument
-    {
-        public Guid DocumentId { get; set; }
-        public string DocumentName { get; set; }
-        public string DocumentType { get; set; }
-        public DateTime DocumentDate { get; set; }
-        public string ArchivedBy { get; set; }
-        public DateTime DeletedDate { get; set; }
-        public string DeletedBy { get; set; }
-        public bool IsProtected { get; set; }
-        public DateTime? ProtectionStartDate { get; set; }
-        public DateTime? ProtectionEndDate { get; set; }
-    }
 }

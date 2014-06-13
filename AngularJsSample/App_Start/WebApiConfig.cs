@@ -12,7 +12,19 @@ namespace AngularJsSample
             // Web API configuration and services
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            //config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DeletedDocumentsApi",
+                routeTemplate: "api/documents/deleted/{pageSize}/{page}",
+                defaults: new { controller = "documents" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DocumentsRoute",
+                routeTemplate: "api/documents/{action}/{id}",
+                defaults: new { controller = "documents", id = RouteParameter.Optional }
+            );
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

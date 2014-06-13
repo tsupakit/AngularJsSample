@@ -14,4 +14,4 @@ app.config(function ($routeProvider)
 
 var alertView = '/app/views/dialog/alert.html';
 var confirmView = '/app/views/dialog/confirm.html';
-var dateFormat = 'dd/MM/yyyy HH:mm:ss Z';
+var dateFormat = 'dd/MM/yyyy HH:mm:ss';
