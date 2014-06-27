@@ -1,57 +1,52 @@
-﻿<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="row">
-        <!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <div class="btn-group">
-                <label class="btn btn-default" ng-model="documentType" btn-radio="'All'">All</label>
-                <label class="btn btn-default" ng-model="documentType" btn-radio="'Unprotected'"><span class="glyphicon glyphicon-remove"></span> Unprotected</label>
-                <label class="btn btn-default" ng-model="documentType" btn-radio="'Protected'"><span class="glyphicon glyphicon-ok"></span> Protected</label>
+﻿<div class="content">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 input-group">
+                <span class="input-group-addon btn btn-default" ng-click="reset()" title="Reset">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </span>
+                <input type="text" ng-model="searchText" placeholder="search.." class="form-control" ng-enter="search()">
+                <span class="input-group-addon btn btn-default" ng-click="search()">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
             </div>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 input-group">-->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 input-group">
-            <!--<span class="input-group-addon btn btn-default" ng-click="selectAll(!isSelectAll)"
-                  ng-disabled="gridOptions.$gridScope.totalFilteredItemsLength() == 0">-->
-            <span class="input-group-addon">
-                <span ng-class="isSelectAll ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'"></span>
-            </span>
-            <input type="text" ng-model="filterOptions.filterText" placeholder="search.." class="form-control" ng-enter="search()">
-        </div>
     </div>
-</div>
-<p />
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-    <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
-    <div class="gridStyle disable_text_highlighting" ng-grid="gridOptions"></div>
     <p />
-</div>
-
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" data-ng-show="totalServerItems > 0">
-    <div class="row well-sm">
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-muted">
-            Total Items : {{totalServerItems}} <br />
-            Selected Items : {{selectedDocs.length}}
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <span class="text-muted">Page Size</span>
-            <div class="text-left btn-group">
-                <label class="btn btn-default" ng-model="pagingOptions.pageSize" btn-radio="10">10</label>
-                <label class="btn btn-default" ng-model="pagingOptions.pageSize" btn-radio="50">50</label>
-                <label class="btn btn-default" ng-model="pagingOptions.pageSize" btn-radio="100">100</label>
-            </div>
-        </div>
-        <!--<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-right">-->
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-right">
-            <pagination total-items="totalServerItems" items-per-page="pagingOptions.pageSize" ng-model="pagingOptions.currentPage" max-size="10" class="pagination" boundary-links="true" rotate="false" num-pages="numPages" style="margin: 0px"></pagination>
-        </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 grid-container">
+        <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+        <div class="gridStyle disable_text_highlighting" ng-grid="gridOptions"></div>
     </div>
 </div>
+<footer class="actionFooter">
 
-<div class="col-xs-6 col-sm-6 col-md-6 text-left ">
-    <button ng-class="canPurge() ? 'btn btn-lg btn-danger' : 'btn btn-lg'" data-ng-click="purge()" ng-disabled="!canPurge()">
-        Permanently delete
-    </button>
-</div>
-<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-    <button ng-class="canRestore() ? 'btn btn-lg btn-primary' : 'btn btn-lg'" data-ng-click="restore()" ng-disabled="!canRestore()">Restore</button>
-</div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" data-ng-show="deletedDocuments.length > 0">
+        <div class="row well-sm">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-muted">
+                Total Items : <span ng-show="searchText != ''">{{deletedDocuments.length}} of </span> {{totalServerItems}} <br />
+                Selected Items : {{selectedDocs.length}}
+            </div>
+            <!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <span class="text-muted">Page Size</span>
+                <div class="text-left btn-group">
+                    <label class="btn btn-default" ng-model="pagingOptions.pageSize" btn-radio="10">10</label>
+                    <label class="btn btn-default" ng-model="pagingOptions.pageSize" btn-radio="50">50</label>
+                    <label class="btn btn-default" ng-model="pagingOptions.pageSize" btn-radio="100">100</label>
+                </div>
+            </div>-->
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-right">
+                <pagination total-items="totalServerItems" items-per-page="pagingOptions.pageSize" ng-model="pagingOptions.currentPage" max-size="5" class="pagination" boundary-links="true" rotate="false" style="margin: 0"></pagination>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left ">
+        <button ng-class="canPurge() ? 'btn btn-lg btn-danger' : 'btn btn-lg'" data-ng-click="purge()" ng-disabled="!canPurge()">
+            Permanently delete
+        </button>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
+        <button ng-class="canRestore() ? 'btn btn-lg btn-primary' : 'btn btn-lg'" data-ng-click="restore()" ng-disabled="!canRestore()">Restore</button>
+    </div>
+
+</footer>

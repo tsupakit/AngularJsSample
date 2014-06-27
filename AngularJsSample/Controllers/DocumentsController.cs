@@ -37,7 +37,7 @@ namespace Draycir.DM.Administration.Web.Controllers
 
         public DocumentsController()
         {
-            //_adminProxy = WcfProxyLocalAdministrationServiceApi.CreateProxy(DraycirLogger.Instance);            
+            //_adminProxy = WcfProxyLocalAdministrationServiceApi.CreateProxy(DraycirLogger.Instance);
         }
 
         //default http get verb
@@ -47,14 +47,24 @@ namespace Draycir.DM.Administration.Web.Controllers
         //[WcfExceptionFilter]
         public DeletedDocumentResponseDto GetDeletedDocuments(int pageSize, int page)
         {
-            //DeletedDocumentResponse response = _adminProxy.GetDeletedDocuments(pageSize, page);
-            DeletedDocumentResponseDto response = new DeletedDocumentResponseDto()
+            return GetDeletedDocuments(new DocumentSearchRequest { PageSize = pageSize, Page = page });
+        }
+
+        [HttpPost]
+        [ActionName("deleted")]
+        //[ImpersonateFilter]
+        //[WcfExceptionFilter]
+        public DeletedDocumentResponseDto GetDeletedDocuments(DocumentSearchRequest request)
+        {
+            //DeletedDocumentResponse response = _adminProxy.GetDeletedDocuments(request);
+            //var result = Mapper.Map<DeletedDocumentResponseDto>(response);
+            //return result;
+
+            return new DeletedDocumentResponseDto()
             {
                 TotalDocuments = DeletedDocumentDto.MockDeletedDocuments.Count,
-                DeletedDocuments = DeletedDocumentDto.MockDeletedDocuments.Skip(pageSize * (page - 1)).Take(pageSize)
+                DeletedDocuments = DeletedDocumentDto.MockDeletedDocuments.Skip(request.PageSize * (request.Page - 1)).Take(request.PageSize)
             };
-            return response;
-            //return Mapper.Map<DeletedDocumentResponseDto>(response);
         }
 
         //public HttpResponseMessage GetFile(string id)
@@ -79,16 +89,16 @@ namespace Draycir.DM.Administration.Web.Controllers
         //}
 
         //[Route("purge")]
+
         [HttpPost]
         [ActionName("purge")]
         //[ImpersonateFilter]
         //[WcfExceptionFilter]
         public int PurgeDocuments(string[] id)
         {
-            //DeletedDocuments.RemoveAll(x => id.Contains(x.DocumentName));
             Guid[] documentIds = Convert(id);
 
-            int result = id.Length; //_adminProxy.PurgeDocuments(documentIds); 
+            int result = id.Length; //_adminProxy.PurgeDocuments(documentIds);
 
             return result;
         }

@@ -1,0 +1,12 @@
+﻿<div class="modal-header">
+    <h4>Metadata</h4>
+</div>
+<div class="modal-body">
+    <div class="row" ng-repeat="item in data.metadata">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><small>{{item.DisplayName}}</small></div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><small>{{item.ValueAsString}}{{item.ValueAsDateTime | date: "dd/MM/yyyy"}}</small></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="dismiss()"> OK </button>
+</div>

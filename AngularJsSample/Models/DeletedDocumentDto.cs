@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+//using Draycir.DM.Domain;
 
 namespace Draycir.DM.Administration.Web.Models
 {
@@ -10,13 +11,14 @@ namespace Draycir.DM.Administration.Web.Models
         public Guid DocumentId { get; set; }
         public string DocumentName { get; set; }
         public string DocumentType { get; set; }
-        public DateTime DocumentDate { get; set; }
+        public DateTime ArchivedDate { get; set; }
         public string ArchivedBy { get; set; }
         public DateTime DeletedDate { get; set; }
         public string DeletedBy { get; set; }
         public bool IsProtected { get; set; }
         public DateTime? ProtectionStartDate { get; set; }
         public DateTime? ProtectionEndDate { get; set; }
+        public List<string> MetadataItems { get; set; }
 
         public string ProtectionPeriod
         {
@@ -25,7 +27,20 @@ namespace Draycir.DM.Administration.Web.Models
                 if (!IsProtected || !ProtectionEndDate.HasValue || ProtectionEndDate < DateTime.UtcNow)
                     return string.Empty;
 
-                return string.Format("{0} year(s)", ProtectionEndDate.Value.Year - DocumentDate.Year);
+                return string.Format("{0} year(s)", ProtectionEndDate.Value.Year - ArchivedDate.Year);
+            }
+        }
+
+        public string ProtectionInfo
+        {
+            get
+            {
+                string period = ProtectionPeriod;
+
+                if (string.IsNullOrEmpty(period))
+                    return string.Empty;
+
+                return string.Format("{0}, until {1}", ProtectionPeriod, ProtectionEndDate.Value.ToString("dd/MM/yyyy"));
             }
         }
 
@@ -64,7 +79,7 @@ namespace Draycir.DM.Administration.Web.Models
                             DocumentId = Guid.NewGuid(),
                             DocumentName = "Test" + i,
                             DocumentType = "Transaction" + i,
-                            DocumentDate = DateTime.Now.AddDays(i - 1),
+                            ArchivedDate = DateTime.Now.AddDays(i - 1),
                             ArchivedBy = "Supakit.T",
                             DeletedDate = DateTime.Now,
                             DeletedBy = "Supakit.T",

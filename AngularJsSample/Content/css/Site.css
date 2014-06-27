@@ -1,5 +1,9 @@
-﻿body {
-    padding-top: 50px;
+﻿html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -10,11 +14,11 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 /* styles for validation helpers */
 .field-validation-error {
@@ -39,4 +43,42 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+
+.content {
+    padding-bottom: 120px;
+    position: absolute;
+    top: 10px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin-bottom: 5px;
+}
+
+.grid-container {
+    width: 100%;
+    height: 100%;
+}
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.actionFooter {
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    bottom: 0;
+}
+
+.disable_text_highlighting {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

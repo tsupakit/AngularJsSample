@@ -86,6 +86,8 @@
     <Content Include="app\services\documentService.js" />
     <Content Include="app\utilities\dialog.js" />
     <Content Include="app\views\deleted.html" />
+    <Content Include="app\views\dialog\dialog.html" />
+    <Content Include="app\views\dialog\metadata.html" />
     <Content Include="app\views\dialog\alert.html" />
     <Content Include="app\views\dialog\confirm.html" />
     <Content Include="Content\css\bootstrap.css" />
@@ -97,6 +99,7 @@
     <Content Include="Content\css\ng-grid.min.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\css\toaster.css" />
+    <Content Include="Content\css\trNgGrid.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
@@ -381,19 +384,23 @@
     <Content Include="Scripts\linq.min.js" />
     <Content Include="Scripts\loading-bar.js" />
     <Content Include="Scripts\loading-bar.min.js" />
+    <Content Include="Scripts\localize.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-grid.js" />
     <Content Include="Scripts\ng-grid.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toaster.js" />
+    <Content Include="Scripts\trNgGrid.js.map" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\trNgGrid.js" />
     <Content Include="Scripts\_intellisense.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Models\DocumentSearchRequest.cs" />
     <Compile Include="Filters\ImpersonateFilterAttribute.cs" />
     <Compile Include="Filters\WcfExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">

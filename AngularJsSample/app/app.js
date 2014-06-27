@@ -1,7 +1,6 @@
 ﻿var app = angular.module('SdcApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'toaster', 'chieffancypants.loadingBar', 'ngGrid']);
 
-app.config(function ($routeProvider)
-{
+app.config(function ($routeProvider) {
 
     $routeProvider.when("/deleted", {
         controller: "documentController",
@@ -12,6 +11,8 @@ app.config(function ($routeProvider)
 
 });
 
-var alertView = '/app/views/dialog/alert.html';
-var confirmView = '/app/views/dialog/confirm.html';
+//var alertView = '/app/views/dialog/alert.html';
+//var confirmView = '/app/views/dialog/confirm.html';
+var metadataView = '/app/views/dialog/metadata.html';
+var dialogView = '/app/views/dialog/dialog.html';
 var dateFormat = 'dd/MM/yyyy HH:mm:ss';
