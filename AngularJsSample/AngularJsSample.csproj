@@ -97,9 +97,10 @@
     <Content Include="Content\css\loading-bar.min.css" />
     <Content Include="Content\css\ng-grid.css" />
     <Content Include="Content\css\ng-grid.min.css" />
+    <Content Include="Content\css\ng-table.css" />
+    <Content Include="Content\css\ng-table.min.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\css\toaster.css" />
-    <Content Include="Content\css\trNgGrid.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
@@ -388,12 +389,13 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-grid.js" />
     <Content Include="Scripts\ng-grid.min.js" />
+    <Content Include="Scripts\ng-table.js" />
+    <Content Include="Scripts\ng-table.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toaster.js" />
-    <Content Include="Scripts\trNgGrid.js.map" />
+    <Content Include="Scripts\ng-table.map" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Scripts\trNgGrid.js" />
     <Content Include="Scripts\_intellisense.js" />
     <Content Include="Web.config" />
   </ItemGroup>

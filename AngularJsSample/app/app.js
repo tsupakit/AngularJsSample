@@ -1,4 +1,4 @@
-﻿var app = angular.module('SdcApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'toaster', 'chieffancypants.loadingBar', 'ngGrid']);
+﻿var app = angular.module('SdcApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'toaster', 'chieffancypants.loadingBar', 'ngGrid', 'ngTable']);
 
 app.config(function ($routeProvider) {
 

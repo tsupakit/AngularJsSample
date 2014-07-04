@@ -15,7 +15,39 @@
     <p />
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 grid-container">
         <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
-        <div class="gridStyle disable_text_highlighting" ng-grid="gridOptions"></div>
+        <!--<div class="gridStyle disable_text_highlighting" ng-grid="gridOptions"></div>-->
+        <!-- ngTable -->
+        <table ng-table="tableParams" class="table">
+            <tr ng-repeat="document in $data" ng-class="{'active' : isSelected(document.DocumentId)}">
+                <td width="30" style="text-align: left">
+                    <input type="checkbox" ng-model="checkedDocuments[document.DocumentId]" />
+                </td>
+                <td width="30">
+                    <span ng-show="document.IsProtected"
+                          popover="Protected {{document.ProtectionInfo}}" popover-placement="right" popover-trigger="mouseenter"
+                          ng-cell-text class="glyphicon glyphicon-lock" />
+                </td>
+                <td width="30">
+                    <!-- metadata -->
+                    <span style="cursor: pointer" ng-cell-text class="glyphicon glyphicon-list-alt" ng-click="showMetadata(document.MetadataItems)" title="Metadata" />
+                </td>
+                <td data-title="'Document Name'" header-class="text-left" sortable="'DocumentName'">
+                    {{document.DocumentName}}
+                </td>
+                <td data-title="'Document Type'" header-class="text-left" sortable="'DocumentType'">
+                    {{document.DocumentType}}
+                </td>
+                <td data-title="'Archived Date'" header-class="text-left" sortable="'ArchivedDate'">
+                    {{document.ArchivedDate | date: "dd/MM/yyyy HH:mm:ss"}}
+                </td>
+                <td data-title="'Deleted Date'" header-class="text-left" sortable="'DeletedDate'">
+                    {{document.DeletedDate | date: "dd/MM/yyyy HH:mm:ss"}}
+                </td>
+                <td data-title="'Deleted By'" header-class="text-left" sortable="'DeletedBy'">
+                    {{document.DeletedBy}}
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 <footer class="actionFooter">
@@ -50,3 +82,25 @@
     </div>
 
 </footer>
+
+<style>
+    .rc-handle-container {
+        position: relative;
+    }
+
+    .rc-handle {
+        position: absolute;
+        width: 7px;
+        cursor: ew-resize;
+        margin-left: -3px;
+        z-index: 2;
+    }
+
+    table.rc-table-resizing {
+        cursor: ew-resize;
+    }
+
+        table.rc-table-resizing thead, table.rc-table-resizing thead > th, table.rc-table-resizing thead > th > a {
+            cursor: ew-resize;
+        }
+</style>
