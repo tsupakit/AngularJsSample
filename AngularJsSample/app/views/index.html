@@ -1,103 +1,19 @@
 ﻿<section class="content-page">
     <div class="content-header">
-        <!--<div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1 class="HeaderText DMBlue">DELETED DOCUMENTS</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="input-group">
-                        <span class="input-group-addon btn btn-default btn-reset" ng-click="reset()" title="Reset">
-                            <span class="icon-refresh" style="font-size:16px;"></span>
-                        </span>
-                        <input type="text" ng-model="searchText" placeholder="Search..." class="form-control search-input" ng-enter="search()">
-                        <span class="input-group-addon btn btn-primary" ng-click="search()">
-                            <span class="icon-magnify"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>-->
     </div>
     <div class="content-body">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <ul>
-                        <li><a href="#/deleted">Deleted Documents</a></li>
-                        <li><a href="#/documentSecurity">Document Security</a></li>
+                        <li><a href="/#deleted">Deleted Documents</a></li>
+                        <!--<li><a href="#/documentSecurity">Document Security</a></li>-->
                     </ul>
-                    <!--<div class="grid-container">
-                        <table ng-table="tableParams" class="table table-document" fixed-header watch="{{cache.currentPage}}" ng-show="$data.length > 0">
-                            <tr ng-repeat="document in $data" ng-class="{'active' : isSelected(document.DocumentId)}">
-                                <td width="35px">
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" class="ckbox" ng-model="checkedDocuments[document.DocumentId]" />
-                                        <span class="box"><span class="tick"></span></span>
-                                    </span>
-                                <td width="40px">
-                                    <span ng-show="document.IsProtected" class="icon-lock"></span>
-                                </td>
-                                <td width="30%" data-title="'DOCUMENT NAME'" header-class="text-left" sortable="'DocumentName'">
-                                    {{document.DocumentName}}
-                                </td>
-                                <td width="20%" data-title="'DOCUMENT TYPE'" header-class="text-left" sortable="'DocumentType'">
-                                    {{document.DocumentType}}
-                                </td>
-                                <td width="15%" data-title="'ARCHIVED DATE'" header-class="text-left" sortable="'ArchivedDate'">
-                                    {{document.ArchivedDate | date: 'shortDate'}}
-                                </td>
-                                <td width="15%" data-title="'DELETED DATE'" header-class="text-left" sortable="'DeletedDate'">
-                                    {{document.DeletedDate | date: 'shortDate'}}
-                                </td>
-                                <td width="15%" data-title="'DELETED BY'" header-class="text-left" sortable="'DeletedBy'">
-                                    {{document.DeletedBy}}
-                                </td>
-                                <td width="60px" class="metadata">
-                                    <button class="btn btn-success btn-metadata" ng-click="showMetadata(document)">
-                                        <span class="icon-list"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="empty text-center" ng-hide="$data.length > 0">
-                            <span class="text-muted">{{notfoundText}}</span>
-                        </div>
-                    </div>-->
                 </div>
             </div>
         </div>
     </div>
 
     <div class="content-footer">
-        <!--<div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="row well-sm">
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-muted">
-                            Total Documents: {{totalServerItems}} <br />
-                            Selected Documents: {{selectedDocs.length}}
-                        </div>
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-right" data-ng-show="deletedDocuments.length > 0" style="margin-top: 5px;">
-                            <pagination total-items="totalServerItems" items-per-page="pagingOptions.pageSize" ng-model="pagingOptions.currentPage" max-size="5" class="pagination" boundary-links="true" rotate="false" style="margin: 0"></pagination>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left ">
-                    <button ng-class="canPurge() ? 'btn btn-lg btn-danger' : 'btn btn-lg'" data-ng-click="purge()" ng-disabled="!canPurge()">
-                        <i class="icon-delete"></i>PERMANENTLY DELETE
-                    </button>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
-                    <button ng-class="canRestore() ? 'btn btn-lg btn-primary' : 'btn btn-lg'" data-ng-click="restore()" ng-disabled="!canRestore()">
-                        <i class="icon-undo"></i>RESTORE
-                    </button>
-                </div>
-            </div>
-        </div>-->
     </div>
 </section>

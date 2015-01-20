@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Filters;
 
-namespace Draycir.DM.Administration.Web.Filters
+namespace AngularJsSample.Filters
 {
     public class WcfExceptionFilterAttribute : ExceptionFilterAttribute
     {
@@ -28,8 +24,6 @@ namespace Draycir.DM.Administration.Web.Filters
             {
                 response.ReasonPhrase = actionExecutedContext.Exception.Message;
             }
-
-            //DraycirLogger.Instance.WriteException(actionExecutedContext.Exception);
 
             throw new HttpResponseException(response);
         }

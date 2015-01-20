@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-//using Draycir.DM.Domain;
 
-namespace Draycir.DM.Administration.Web.Models
+namespace AngularJsSample.Models
 {
     public class DeletedDocumentDto
     {

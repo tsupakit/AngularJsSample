@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Draycir.DM.Administration.Web.Filters
+namespace AngularJsSample.Filters
 {
     /// <summary>
     /// Filter IP address for MVC Controller.

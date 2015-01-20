@@ -114,7 +114,6 @@
     <Content Include="app\directives\fixedHeader.js" />
     <Content Include="app\directives\ngEnter.js" />
     <Content Include="app\filters\boolToStringFilter.js" />
-    <Content Include="app\filters\datetimeFilter.js" />
     <Content Include="app\services\boundObject.js" />
     <Content Include="app\services\documentSecurityService.js" />
     <Content Include="app\services\documentService.js" />
@@ -453,7 +452,6 @@
     <Content Include="Scripts\ng-table.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\toaster.js" />
     <Content Include="Scripts\ng-table.map" />
     <Content Include="Scripts\toastr.min.js.map" />
     <None Include="Scripts\_references.js" />

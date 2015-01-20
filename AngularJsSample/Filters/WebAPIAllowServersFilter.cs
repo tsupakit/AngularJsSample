@@ -1,13 +1,6 @@
-﻿
-using System;
-using System.Net;
-using System.Net.Http;
-using System.ServiceModel.Channels;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.Controllers;
+﻿using System.Web.Http;
 
-namespace Draycir.DM.Administration.Web.Filters
+namespace AngularJsSample.Filters
 {
     /// <summary>
     /// Filter IP address for WebApi Controller.

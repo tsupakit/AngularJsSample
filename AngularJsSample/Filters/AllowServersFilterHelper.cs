@@ -6,9 +6,7 @@ using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.Mvc;
 
-//using Draycir.Base;
-
-namespace Draycir.DM.Administration.Web.Filters
+namespace AngularJsSample.Filters
 {
     /// <summary>
     /// Helper class to filter request for allow condition

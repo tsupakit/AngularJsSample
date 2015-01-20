@@ -1,19 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
-using AutoMapper;
-//using Draycir.Base;
-using Draycir.DM.Administration.Web.Filters;
-using Draycir.DM.Administration.Web.Models;
-//using Draycir.DM.Domain;
-//using Draycir.DM.Services;
+using AngularJsSample.Models;
 
-namespace Draycir.DM.Administration.Web.Controllers
+namespace AngularJsSample.Controllers
 {
     //[RoutePrefix("api/documents")]
     public class DocumentsController : ApiController

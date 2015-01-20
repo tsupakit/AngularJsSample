@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Reflection;
-using System.Runtime.Serialization;
-
-namespace Draycir.DM.Administration.Web.Models
+﻿namespace AngularJsSample.Models
 {
     /// <summary>
     /// Document search request
@@ -31,7 +25,7 @@ namespace Draycir.DM.Administration.Web.Models
 
         /// <summary>
         /// Gets or sets the query search phrase string.
-        /// </summary>       
+        /// </summary>
         public string Query
         {
             get;

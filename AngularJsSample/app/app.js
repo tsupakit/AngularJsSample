@@ -17,7 +17,7 @@ app.config([
             templateUrl: "/app/views/users/documentTypesPermission.html"
         });
 
-        $routeProvider.otherwise({ redirectTo: "/index" });
+        $routeProvider.otherwise({ redirectTo: "/deleted" });
     }
 ]);
 

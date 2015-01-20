@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 using System.Web;
 using System.Web.Http.Filters;
 
-namespace Draycir.DM.Administration.Web.Filters
+namespace AngularJsSample.Filters
 {
     public class ImpersonateFilterAttribute : ActionFilterAttribute
     {

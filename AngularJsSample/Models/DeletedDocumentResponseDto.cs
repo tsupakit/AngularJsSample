@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace Draycir.DM.Administration.Web.Models
+namespace AngularJsSample.Models
 {
     /// <summary>
     /// Details of documents matching search criteria.
-    /// </summary>    
+    /// </summary>
     public class DeletedDocumentResponseDto
     {
         /// <summary>
