@@ -60,10 +60,11 @@ namespace Draycir.DM.Administration.Web.Controllers
             //var result = Mapper.Map<DeletedDocumentResponseDto>(response);
             //return result;
 
+            var result = DeletedDocumentDto.MockDeletedDocuments.Where(DeletedDocumentDto.Condition(request.Query));
             return new DeletedDocumentResponseDto()
             {
-                TotalDocuments = DeletedDocumentDto.MockDeletedDocuments.Count,
-                DeletedDocuments = DeletedDocumentDto.MockDeletedDocuments.Skip(request.PageSize * (request.Page - 1)).Take(request.PageSize)
+                TotalDocuments = string.IsNullOrEmpty(request.Query) ? DeletedDocumentDto.MockDeletedDocuments.Count : result.Count(),
+                DeletedDocuments = result.Skip(request.PageSize * (request.Page - 1)).Take(request.PageSize)
             };
         }
 

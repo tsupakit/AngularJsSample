@@ -5,54 +5,31 @@
     <title>Spindle Document Capture</title>
     <link href="content/css/bootstrap.min.css" rel="stylesheet" />
     <!--<link href="content/css/amelia-bootstrap-theme.min.css" rel="stylesheet" />-->
-    <link href="Content/css/toaster.css" rel="stylesheet" />
-    <link href="content/css/loading-bar.min.css" rel="stylesheet" />
-    <link href="content/css/ng-grid.css" rel="stylesheet" />
-    <link href="content/css/ng-grid.min.css" rel="stylesheet" />
-    <link href="content/css/ng-table.min.css" rel="stylesheet" />
+    <link href="Content/css/toastr.css" rel="stylesheet" />
+    <link href="content/css/loading-bar.min.css" rel="stylesheet"/>
+    <link href="content/css/acute.select.css" rel="stylesheet" />
+    <link href="content/css/ng-table.min.css" rel="stylesheet"/>
+    <link href="content/css/modernuiicons.css" rel="stylesheet" />
     <link href="content/css/site.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--<link href="favicon.ico" rel="shortcut icon" />-->
 
-    <style>
-        /*.ngViewport.ng-scope {
-            height: auto !important;
-            overflow-y: hidden;
-        }
-
-        .ngTopPanel.ng-scope, .ngHeaderContainer {
-            width: auto !important;
-        }*/
-    </style>
 
 </head>
-<body>
-    <div id="page">
-        <!--<header class="container-fluid">
-            <div class="navbar navbar-default" id="menu">
-                <div class="navbar-header">
-                    <button class="btn btn-success navbar-toggle"></button>
-                    <div id="logo">
-                        <h4>Spindle Document Capture</h4>
-                    </div>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#/deleted">Deleted Documents</a></li>
-                        <li><a href="#/places">My Places</a></li>
-                        <li><a href="#/about">About</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>-->
-        <section class="container-fluid" id="body">
-            <div data-ng-view=""></div>
-        </section>
+<body class="ModelessWindow user-unselectable">
+    <!--<div id="page">-->
 
-        <!--<hr />
+    <header class="container-fluid HeaderView">
+        <div class="logo"></div>
+    </header>
+    <section class="container-fluid Workspace" id="body">
+        <div data-ng-view=""></div>
+    </section>
+    <footer class="container"></footer>
 
-        <footer class="container"></footer>-->
-    </div>
+    <script src="~/scripts/i18n/angular-locale_en-gb.js"></script>
+
+    <!--</div>-->
 
     <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.min.js"></script>
@@ -69,21 +46,25 @@
     <script src="scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
     <script src="scripts/localize.js"></script>
 
-    <script src="scripts/toaster.js"></script>
+    <script src="scripts/toastr.min.js"></script>
     <script src="scripts/loading-bar.min.js"></script>
 
     <script src="scripts/jquery-1.10.2.min.js"></script>
     <script src="scripts/ng-grid.min.js"></script>
     <script src="scripts/ng-table.js"></script>
     <script src="scripts/linq.min.js"></script>
+    <script src="scripts/acute.select.js"></script>
 
     <script src="app/app.js"></script>
-
+    <script src="app/utilities/messages.js"></script>
     <script src="app/utilities/dialog.js"></script>
     <script src="app/services/documentService.js"></script>
-    <script src="app/directives/ngEnter.js"></script>
 
     <script src="app/controllers/dialogController.js"></script>
     <script src="app/controllers/documentController.js"></script>
+    <script src="app/filters/boolToStringFilter.js"></script>
+
+    <script src="app/directives/fixedHeader.js"></script>
+    <script src="app/directives/ngEnter.js"></script>
 </body>
 </html>

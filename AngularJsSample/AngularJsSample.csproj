@@ -45,6 +45,10 @@
       <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -56,6 +60,30 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -82,28 +110,52 @@
     <Content Include="app\app.js" />
     <Content Include="app\controllers\dialogController.js" />
     <Content Include="app\controllers\documentController.js" />
+    <Content Include="app\controllers\userPermissionController.js" />
+    <Content Include="app\directives\fixedHeader.js" />
     <Content Include="app\directives\ngEnter.js" />
+    <Content Include="app\filters\boolToStringFilter.js" />
+    <Content Include="app\filters\datetimeFilter.js" />
+    <Content Include="app\services\boundObject.js" />
+    <Content Include="app\services\documentSecurityService.js" />
     <Content Include="app\services\documentService.js" />
     <Content Include="app\utilities\dialog.js" />
+    <Content Include="app\utilities\messages.js" />
     <Content Include="app\views\deleted.html" />
     <Content Include="app\views\dialog\dialog.html" />
     <Content Include="app\views\dialog\metadata.html" />
-    <Content Include="app\views\dialog\alert.html" />
-    <Content Include="app\views\dialog\confirm.html" />
+    <Content Include="app\views\index.html" />
+    <Content Include="app\views\users\documentTypesPermission.html" />
+    <Content Include="Content\css\acute.select.css" />
     <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\flaty-bootstrap.min.css" />
     <Content Include="Content\css\loading-bar.css" />
-    <Content Include="Content\css\loading-bar.min.css" />
-    <Content Include="Content\css\ng-grid.css" />
-    <Content Include="Content\css\ng-grid.min.css" />
+    <Content Include="Content\css\loading-bar.min.css">
+      <DependentUpon>loading-bar.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\modernuiicons.css" />
     <Content Include="Content\css\ng-table.css" />
-    <Content Include="Content\css\ng-table.min.css" />
+    <Content Include="Content\css\ng-table.min.css">
+      <DependentUpon>ng-table.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Site.css" />
-    <Content Include="Content\css\toaster.css" />
+    <Content Include="Content\css\toastr.css" />
+    <Content Include="Content\css\toastr.min.css">
+      <DependentUpon>toastr.css</DependentUpon>
+    </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\modernuiicons.svg" />
+    <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\checkbox.svg" />
+    <Content Include="Content\images\close.svg" />
+    <Content Include="Content\images\delete.svg" />
+    <Content Include="Content\images\graycheckbox.svg" />
+    <Content Include="Content\images\search.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Scripts\acute.select.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -377,6 +429,13 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\css\toastr.css.map" />
+    <Content Include="Content\css\toastr.less" />
+    <Content Include="Content\css\toastr.scss" />
+    <Content Include="Content\fonts\modernuiicons.eot" />
+    <Content Include="Content\fonts\modernuiicons.ttf" />
+    <Content Include="Content\fonts\modernuiicons.woff" />
+    <Content Include="Content\css\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -387,6 +446,7 @@
     <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Scripts\localize.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.7.2.js" />
     <Content Include="Scripts\ng-grid.js" />
     <Content Include="Scripts\ng-grid.min.js" />
     <Content Include="Scripts\ng-table.js" />
@@ -395,13 +455,19 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toaster.js" />
     <Content Include="Scripts\ng-table.map" />
+    <Content Include="Scripts\toastr.min.js.map" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_intellisense.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Filters\AllowServersFilterHelper.cs" />
+    <Compile Include="Filters\MvcAllowServersFilter.cs" />
+    <Compile Include="Filters\WebAPIAllowServersFilter.cs" />
     <Compile Include="Models\DocumentSearchRequest.cs" />
     <Compile Include="Filters\ImpersonateFilterAttribute.cs" />
     <Compile Include="Filters\WcfExceptionFilterAttribute.cs" />
@@ -433,7 +499,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\filters\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>

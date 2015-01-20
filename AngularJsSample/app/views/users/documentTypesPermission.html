@@ -1,0 +1,70 @@
+﻿<section class="content-page userPermissionDocumentType">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1 class="HeaderText DMBlue">DOCUMENT PERMISSIONS</h1>
+
+                    <p style="margin: 10px 0 10px;">
+                        <label class="username">USER NAME</label>
+                        <acselect class="ac-select stateList" style="width: 385px;"
+                                  ng-disabled="inProgress"
+                                  ac-model="selectUserId"
+                                  ac-options="s.Name for s.Id in getUsersDropdown()"
+                                  ac-settings="{ comboMode: true, loadOnOpen: true, minWidth: '300px', loadOnCreate: true ,
+                                    allowClear: false, pageSize: null, itemsInView: 8,  placeholderText: '',
+                                    noItemsText:'No users found.'}">
+                        </acselect>
+                    </p>
+                    <p style="margin: 0 0 10px;">
+                        <label class="username">CAN VIEW</label>
+                        <acselect class="ac-select stateList" style="width: 385px;"
+                                  ng-disabled="inProgress"
+                                  ac-model="permissionGroup"
+                                  ac-options="s.text for s.value in permissionGroupLists()"
+                                  ac-keyfield="value"
+                                  ac-settings="{ comboMode: false, loadOnOpen: true, minWidth: '300px', loadOnCreate: true, showSearchBox: false,
+                                    allowClear: false, pageSize: null, itemsInView: 8}">
+                        </acselect>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+                    <div class="grid-container" ng-show="selectUserId!=''" ng-disabled="isGridDisabled()">
+                        <table ng-table="tableParams" show-filter="false" class="table table-document" fixed-header watch="{{$data.length}}">                            
+                            <tr ng-repeat="it in $data">
+                                <td data-title="''" header-class="text-center allCheckBox" style="max-width:60px; min-width:60px; text-align: center">
+                                    <span class="custom-checkbox">
+                                        <input type="checkbox" ng-model="it.CanViewable" class="ckbox" ng-change="onCanViewChange(it.Name, it.CanViewable)" ng-disabled="isGridDisabled()" />
+                                        <span class="box"><span class="tick"></span></span>
+                                    </span>
+                                </td>
+                                <td width="30%" data-title="'DOCUMENT TYPE'" header-class="text-left" sortable="'DisplayName'">
+                                    {{it.DisplayName}}
+                                </td>
+                                <td width="70%" data-title="'DESCRIPTION'" header-class="text-left">
+                                    {{it.Description}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                    <button class="btn btn-lg btn-primary" data-ng-click="save()" ng-disabled="!canSave()" style="margin-right: 12px;"><i class="icon-ok"></i> SAVE</button>
+                    <button class="btn btn-lg btn-danger" data-ng-click="close()" ng-disabled="inProgress"><i class=" icon-delete"></i>CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

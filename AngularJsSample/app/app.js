@@ -1,18 +1,25 @@
-﻿var app = angular.module('SdcApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'toaster', 'chieffancypants.loadingBar', 'ngGrid', 'ngTable']);
+﻿var app = angular.module('SdcApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'angular-loading-bar', 'ngTable', 'acute.select']);
 
-app.config(function ($routeProvider) {
+app.config([
+    '$routeProvider', function ($routeProvider) {
 
-    $routeProvider.when("/deleted", {
-        controller: "documentController",
-        templateUrl: "/app/views/deleted.html"
-    });
+        $routeProvider.when("/index", {
+            templateUrl: "/app/views/index.html"
+        });
 
-    $routeProvider.otherwise({ redirectTo: "/deleted" });
+        $routeProvider.when("/deleted", {
+            controller: "documentController",
+            templateUrl: "/app/views/deleted.html"
+        });
 
-});
+        $routeProvider.when("/documentSecurity", {
+            controller: "userPermissionController",
+            templateUrl: "/app/views/users/documentTypesPermission.html"
+        });
 
-//var alertView = '/app/views/dialog/alert.html';
-//var confirmView = '/app/views/dialog/confirm.html';
+        $routeProvider.otherwise({ redirectTo: "/index" });
+    }
+]);
+
 var metadataView = '/app/views/dialog/metadata.html';
 var dialogView = '/app/views/dialog/dialog.html';
-var dateFormat = 'dd/MM/yyyy HH:mm:ss';

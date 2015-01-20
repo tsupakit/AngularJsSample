@@ -1,4 +1,4 @@
-﻿app.controller('dialogController', function ($scope, $modalInstance, data)
+﻿app.controller('dialogController', ['$scope', '$modalInstance', 'data', function ($scope, $modalInstance, data)
 {
     $scope.data = data;
 
@@ -9,4 +9,4 @@
     $scope.dismiss = function () {
         $modalInstance.dismiss();
     };
-});
+}]);

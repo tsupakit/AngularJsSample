@@ -20,27 +20,14 @@ namespace Draycir.DM.Administration.Web.Models
         public DateTime? ProtectionEndDate { get; set; }
         public List<string> MetadataItems { get; set; }
 
-        public string ProtectionPeriod
+        public int ProtectionPeriod
         {
             get
             {
-                if (!IsProtected || !ProtectionEndDate.HasValue || ProtectionEndDate < DateTime.UtcNow)
-                    return string.Empty;
+                if (!IsProtected || !ProtectionEndDate.HasValue || ProtectionEndDate < DateTime.UtcNow.AddDays(-1).Date)
+                    return 0;
 
-                return string.Format("{0} year(s)", ProtectionEndDate.Value.Year - ArchivedDate.Year);
-            }
-        }
-
-        public string ProtectionInfo
-        {
-            get
-            {
-                string period = ProtectionPeriod;
-
-                if (string.IsNullOrEmpty(period))
-                    return string.Empty;
-
-                return string.Format("{0}, until {1}", ProtectionPeriod, ProtectionEndDate.Value.ToString("dd/MM/yyyy"));
+                return ProtectionEndDate.Value.Year - ArchivedDate.Year;
             }
         }
 
@@ -65,7 +52,7 @@ namespace Draycir.DM.Administration.Web.Models
 
                         if (prime)
                         {
-                            protectionStart = DateTime.Now;
+                            protectionStart = DateTime.UtcNow;
                             protectionEnd = protectionStart.Value.AddMonths(i);
                         }
                         //else
@@ -79,9 +66,9 @@ namespace Draycir.DM.Administration.Web.Models
                             DocumentId = Guid.NewGuid(),
                             DocumentName = "Test" + i,
                             DocumentType = "Transaction" + i,
-                            ArchivedDate = DateTime.Now.AddDays(i - 1),
+                            ArchivedDate = DateTime.UtcNow.AddDays(i - 1),
                             ArchivedBy = "Supakit.T",
-                            DeletedDate = DateTime.Now,
+                            DeletedDate = DateTime.UtcNow,
                             DeletedBy = "Supakit.T",
                             IsProtected = prime,
                             ProtectionStartDate = protectionStart,
@@ -100,16 +87,29 @@ namespace Draycir.DM.Administration.Web.Models
                 return false;
             if (number == 2)
                 return true;
-            if ((number & 1) == 0)
+            if ((number & 1) == 0) //even number
                 return false;
 
             for (int i = 3; i < number; i++)
             {
-                if (number % i == 0)
+                if (number%i == 0)
                     return false;
             }
 
             return true;
+        }
+
+        public static Func<DeletedDocumentDto, bool> Condition(string query)
+        {
+            if (string.IsNullOrEmpty(query))
+                return x => true;
+
+            Func<DeletedDocumentDto, bool> predicate = null;
+
+            predicate = document => document.DocumentName.ToLower()
+                .Contains(query.ToLower());
+
+            return predicate;
         }
     }
 }

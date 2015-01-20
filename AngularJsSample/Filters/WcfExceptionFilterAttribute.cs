@@ -13,12 +13,12 @@ namespace Draycir.DM.Administration.Web.Filters
     {
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
             response.Content = new StringContent(actionExecutedContext.Exception.Message);
 
             if (actionExecutedContext.Exception is System.ServiceModel.EndpointNotFoundException)
-            {                
-                response.ReasonPhrase = "Could not connect to SDC service.";
+            {
+                response.ReasonPhrase = "An error occurred while performing an operation on the service. Please ensure the Spindle Document Capture service is running and retry the operation.";
             }
             //else if (actionExecutedContext.Exception is System.ServiceModel.Security.SecurityAccessDeniedException)
             //{
@@ -28,6 +28,8 @@ namespace Draycir.DM.Administration.Web.Filters
             {
                 response.ReasonPhrase = actionExecutedContext.Exception.Message;
             }
+
+            //DraycirLogger.Instance.WriteException(actionExecutedContext.Exception);
 
             throw new HttpResponseException(response);
         }

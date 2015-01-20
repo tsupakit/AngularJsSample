@@ -1,12 +1,39 @@
-﻿<div class="modal-header">
-    <h4>Metadata</h4>
-</div>
-<div class="modal-body">
-    <div class="row" ng-repeat="item in data.metadata">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><small>{{item.DisplayName}}</small></div>
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><small>{{item.ValueAsString}}{{item.ValueAsDateTime | date: "dd/MM/yyyy"}}</small></div>
+﻿<div class="modal-header" style="border-bottom:none;">
+    <div class="row" style="margin-bottom: 0">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left"><h4 class="HeaderText DMGreen" style="padding-left: 8px;">ASSOCIATED DATA</h4></div>
+        <!--<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-left" style="margin-top:12px">
+            <span class="label label-default" ng-show="data.document.IsProtected" style="font-size: 85%;">
+                Document protected for {{data.document.ProtectionInfo}}
+            </span>
+        </div>-->
+    </div>
+    <div class="row" style="margin-bottom: 0">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+            <span class="label label-default" ng-show="data.document.IsProtected">
+                Document protected for {{data.document.ProtectionPeriod}} year(s), until {{data.document.ProtectionEndDate | date: 'shortDate' }}
+            </span>
+        </div>
     </div>
 </div>
-<div class="modal-footer">
-    <button class="btn btn-primary" ng-click="dismiss()"> OK </button>
+<div class="modal-body" style="padding-top: 0; padding-bottom: 0;">
+    <table class="table table-metadata BodyText">
+        <tbody>
+            <tr ng-repeat="item in data.document.MetadataItems">
+                <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{item.DisplayName}}</td>
+                <td class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <strong>
+                        <span ng-show="item.ValueAsString != null">{{item.ValueAsString}}</span>
+                        <span ng-show="item.ValueAsDateTime != null">{{item.ValueAsDateTime | date: 'shortDate'}}</span>
+                        <span ng-show="item.ValueAsBoolean != null">{{item.ValueAsBoolean | boolToString: 'Yes': 'No' }}</span>
+                        <span ng-show="item.ValueAsInteger != null">{{item.ValueAsInteger}}</span>
+                        <span ng-show="item.ValueAsDecimal != null">{{item.ValueAsDecimal}}</span>
+                    </strong>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer" style="margin-top:0; border-top: none;">
+    <button class="btn btn-lg btn-primary" ng-click="dismiss()"><i class="icon-ok"></i>OK</button>
 </div>

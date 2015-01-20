@@ -1,10 +1,17 @@
 ﻿<div class="modal-header">
-    <h4>{{ data.title }}</h4>
+    <div class="row">
+        <span class="modal-icon {{data.icon}}"></span>
+        <div class="col">
+            <h4 >{{ data.title }}</h4>
+        </div>
+    </div>
 </div>
 <div class="modal-body">
     {{ data.message }}
 </div>
 <div class="modal-footer">    
-    <button class="btn btn-default" ng-click="dismiss()" ng-show="data.isConfirmation">No</button>
-    <button class="btn btn-primary" ng-click="ok()">{{data.okMessage}}</button>
+    <button class="btn btn-lg btn-primary" ng-click="ok()">
+        {{data.okMessage}}
+    </button>
+   <button class="btn btn-lg btn-default" ng-click="dismiss()" ng-show="data.isConfirmation">No</button>
 </div>
